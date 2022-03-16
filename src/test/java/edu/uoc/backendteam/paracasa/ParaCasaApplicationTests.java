@@ -1,4 +1,4 @@
-package com.paracasa.paraCasa;
+package edu.uoc.backendteam.paracasa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

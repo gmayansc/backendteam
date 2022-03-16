@@ -1,4 +1,4 @@
-package com.paracasa.paraCasa;
+package edu.uoc.backendteam.paracasa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
