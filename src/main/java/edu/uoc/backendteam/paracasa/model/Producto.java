@@ -11,14 +11,25 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String nombre;
-	
+
 	private String descripcion;
-	
+
 	private float kcal;
-	
+
 	private double precio;
+
+	public Producto() {
+
+	}
+
+	public Producto(String nombre, String descripcion, float kcal, double precio) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.kcal = kcal;
+		this.precio = precio;
+	}
 
 	public double getPrecio() {
 		return precio;
@@ -59,6 +70,5 @@ public class Producto {
 	public void setKcal(float kcal) {
 		this.kcal = kcal;
 	}
-	
-	
+
 }

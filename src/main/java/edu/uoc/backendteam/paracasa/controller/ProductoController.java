@@ -1,5 +1,7 @@
 package edu.uoc.backendteam.paracasa.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,15 @@ public class ProductoController {
     	productoRepository.save(p);
     	
         return "producto";
+    }
+    
+    @GetMapping("/listar-productos")
+    public String listProduct(Model model) {
+    	
+    	List<Producto> lstProduct = productoRepository.findAll();
+    	model.addAttribute("lstProduct", lstProduct);
+    	
+        return "listProduct";
     }
 
 }
