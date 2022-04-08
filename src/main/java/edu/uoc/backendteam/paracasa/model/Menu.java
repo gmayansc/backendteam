@@ -20,7 +20,7 @@ import edu.uoc.backendteam.paracasa.model.menu.MenuProductoAssociation;
 public class Menu {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@OneToOne(fetch = FetchType.LAZY)

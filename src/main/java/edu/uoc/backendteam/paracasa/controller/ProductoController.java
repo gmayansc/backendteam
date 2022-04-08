@@ -3,11 +3,17 @@ package edu.uoc.backendteam.paracasa.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.uoc.backendteam.paracasa.dao.ProductoRepository;
 import edu.uoc.backendteam.paracasa.model.Producto;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class ProductoController {
@@ -20,17 +26,59 @@ public class ProductoController {
         model.addAttribute("name", name);
         return "producto";
     }
-    
-    @GetMapping("/inserta-producto")
-    public String insertar() {
-    	Producto p = new Producto();
-    	p.setNombre("producto1");
-    	p.setDescripcion("des1");
-    	p.setKcal(1);
-    	
-    	productoRepository.save(p);
-    	
-        return "producto";
+
+    @GetMapping("/productos")
+    public String productos(Model model) {
+
+        productoRepository.findAll().forEach(p-> System.out.println(p.getNombre()));
+        model.addAttribute("datos", productoRepository.findAll());
+        return "index-producto";
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProducto(@PathVariable("id") long id, Model model) {
+
+        Producto producto = productoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("producto id es invalido:" + id));
+        productoRepository.delete(producto);
+
+        return "redirect:/productos";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        Producto producto = productoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("producto id es invalido:" + id));
+
+        model.addAttribute("producto", producto);
+
+        return "update-producto";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateProducto(@PathVariable("id") long id, @Valid Producto producto, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            producto.setId(id);
+            return "update-producto";
+        }
+
+        productoRepository.save(producto);
+
+        return "redirect:/productos";
+    }
+
+    @GetMapping("/nuevo")
+    public String showSignUpForm(Producto producto) {
+        return "create-producto";
+    }
+
+    @PostMapping("/create")
+    public String addProducto(@Valid Producto producto, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "create-producto";
+        }
+
+        productoRepository.save(producto);
+        return "redirect:/productos";
+    }
+
 
 }
