@@ -1,0 +1,20 @@
+<table>
+	<tr>
+		<th>id</th>
+		<th>Nombre</th>
+		<th>Descripcion</th>
+		<th>kcal</th>
+		<th>Precio</th>
+		<th>Editar</th>
+		<th>Eliminar</th>
+	</tr>
+	<tr th:each="product: ${lstProduct}">
+		<td th:text="${product.id}" />
+		<td th:text="${product.nombre}" />
+		<td th:text="${product.descripcion}"/>
+		<td th:text="${product.kcal}"/>
+		<td th:text="${product.precio}"/>
+		<td><a th:href="@{edit-product/(id=${product.id})}">editar</a></td>
+		<td><a th:href="@{delete-product/(id=${product.id})}">eliminar</a></td>
+	</tr>
+</table>
