@@ -1,18 +1,76 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Index</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Crear Producto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/shards.min.css">
+    <link rel="stylesheet" href="../paracasa.css">
 </head>
 <body>
-    <h2>Principal</h2>
-    <ol>
-        <li>Controller HolaMundo <a href="/producto-home">aqui</a></li>
-        <li>
-        Productos <a href="/productos">aqui</a>
-        </li>
-    </ol>
+<div class="container my-5">
+<nav>
+<div style="text-align:center"><img class="logo-home" height="150px" src="../images/logo.png">
+  <h2 class="mb-5">ParaCasa: delivery food</h2>
+  </div>
+<ul class="nav justify-content-center">
 
+  <li class="nav-item">
+    <a class="nav-link" href="/index.html">Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/menus">Menus</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/clientes">Clientes</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/productos">Productos</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link disabled" >Restaurantes</a>
+  </li>
+</ul>
+</nav>
+  
+  <div class="mt-5 cards-container">
+  <div class="card" style="width: 18rem;">
+  <img src="../images/menu.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Gestionar menú</h5>
+    <p class="card-text">Crea y gestiona los menús para los clientes de ParaCasa. Vincula producto, restaurante y cliente.</p>
+    <a href="/menus" class="btn btn-primary">Ver más</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../images/cliente.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Gestionar clientes</h5>
+    <p class="card-text">Aquí encontrarás toda la información de nuestros clientes que han reservado con ParaCasa.</p>
+    <a href="/clientes" class="btn btn-primary">Ver más</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../images/food.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Gestionar productos</h5>
+    <p class="card-text">Gran variedad de productos para incluir en nuestros menús. Revisa sus características y precios.</p>
+    <a href="/productos" class="btn btn-primary">Gestionar</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../images/rest.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Gestionar restaurantes</h5>
+    <p class="card-text">Gestiona todos los restaurantes y proveedores de productos que están vinculados con ParaCasa.</p>
+    <button href="#" class="btn btn-primary" disabled>Próximamente</button>
+  </div>
+</div>
+  </div>
+</div>
 
 </body>
 </html>

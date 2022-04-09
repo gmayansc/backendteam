@@ -10,9 +10,32 @@
     <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
+<nav>
+<div style="text-align:center"><img class="logo-home" height="150px" src="../images/logo.png">
+  <h2 class="mb-5">ParaCasa: delivery food</h2>
+  </div>
+<ul class="nav justify-content-center">
+
+  <li class="nav-item">
+    <a class="nav-link" href="/index.html">Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/menus">Menus</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/clientes">Clientes</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/productos">Productos</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link disabled" >Restaurantes</a>
+  </li>
+</ul>
+</nav>
 <div th:switch="${datos}" class="container my-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12" >
             <h2 th:case="null">No hay productos!</h2>
             <div th:case="*">
                 <h2 class="my-5">Productos</h2>
@@ -20,8 +43,8 @@
                     <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Caloria</th>
+                        <th>Descripción</th>
+                        <th>Calorías</th>
                         <th>Precio</th>
                         <th colspan="2">Acciones</th>
                     </tr>
@@ -39,7 +62,7 @@
                 </table>
             </div>
 
-            <p class="my-5"><a href="/nuevo" class="btn btn-primary"><i class="fas fa-user-plus ml-2">Nuevo producto</i></a></p>
+            <p class="my-5"><a href="/nuevo" class="btn btn-primary"><span class="fas fa-user-plus ml-2"> Nuevo producto</span></a></p>
 
         </div>
     </div>

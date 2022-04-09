@@ -19,6 +19,14 @@ public class Cliente {
 	public Long getId() {
 		return id;
 	}
+	
+	public Cliente() {}
+	
+	public Cliente(String email, String direccion, String nombre) {
+		this.email = email;
+		this.direccion = direccion;
+		this.nombre = nombre;
+	}
 
 	public void setId(Long id) {
 		this.id = id;
