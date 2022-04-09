@@ -30,3 +30,12 @@ execute the follow command for run image and startup app
 
 Can you see the home page on
 * ``http://localhost:8088``
+
+## build app from docker-compose
+execute the follow command for build services on docker container
+* ``docker-compose up -d``
+
+Can you see the home page on
+* ``http://localhost:8080/productos``
+
+
