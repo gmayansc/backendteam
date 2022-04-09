@@ -30,6 +30,12 @@ public class Menu {
 	
 	@OneToMany(mappedBy = "menu", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<MenuProductoAssociation> lstProducto;
+	
+	public Menu() {}
+	public Menu(Cliente cliente, List<MenuProductoAssociation> lstProducto) {
+		this.cliente = cliente;
+		this.lstProducto = lstProducto;
+	}
 
 	public Long getId() {
 		return id;
