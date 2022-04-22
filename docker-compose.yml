@@ -2,11 +2,10 @@ version: '3.5'
 
 services:
   mysql-8:
-    container_name: mysql-db-8
     image: mysql
     restart: always
     ports:
-      - "3306:3306"
+      - "3308:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: paracasa-db
@@ -23,10 +22,16 @@ services:
     command: java -jar -Dspring.profiles.active=docker target/paracasa.jar
     networks:
       - backend
+
     depends_on:
       - mysql-8
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-8:3306/paracasa-db?useSSL=false&allowPublicKeyRetrieval=True&serverTimezone=UTC&useLegacyDatetimeCode=false
+      SPRING_DATASOURCE_USERNAME: paracasa
+      SPRING_DATASOURCE_PASSWORD: paracasa
 
 volumes:
   data-db-mysql:
+
 networks:
   backend:

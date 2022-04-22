@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registro usuario</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}" >
+    <link rel="stylesheet" th:href="@{/css/shards.min.css}">
+</head>
+<body>
+
+<div class="container my-5">
+    <h2 class="mb-5">Registro usuario</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/register-process}" th:object="${user}" method="post">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="username" class="col-form-label">Usuario</label>
+                        <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Usuario">
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password" class="col-form-label">Password</label>
+                        <input type="text" th:field="*{password}" class="form-control" id="password" placeholder="Password">
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="name" class="col-form-label">Nombre</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Usuario">
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="lastName" class="col-form-label">Apellido</label>
+                        <input type="text" th:field="*{lastName}" class="form-control" id="lastName" placeholder="Apellido">
+                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Crear Usuario">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

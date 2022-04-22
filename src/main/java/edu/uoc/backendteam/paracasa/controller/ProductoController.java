@@ -1,7 +1,5 @@
 package edu.uoc.backendteam.paracasa.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +31,7 @@ public class ProductoController {
 
         productoRepository.findAll().forEach(p-> System.out.println(p.getNombre()));
         model.addAttribute("datos", productoRepository.findAll());
-        return "index-producto";
+        return "lista-productos";
     }
     
 
@@ -68,7 +66,7 @@ public class ProductoController {
     }
 
     @GetMapping("/nuevo")
-    public String showSignUpForm(Producto producto) {
+    public String mostrarRegistroProducto(Producto producto) {
         return "create-producto";
     }
 
