@@ -16,15 +16,41 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>
 <body>
+<<<<<<< HEAD:src/main/resources/templates/lista-productos.html
 
 <form id="logoutForm" th:action="@{/logout}" method="post">
     <button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" type="submit"><i class="fas fa-sign-out-alt">Sign Out</i></button>
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 </form>
 
+=======
+<nav>
+<div style="text-align:center"><img class="logo-home" height="150px" src="../images/logo.png">
+  <h2 class="mb-5">ParaCasa: delivery food</h2>
+  </div>
+<ul class="nav justify-content-center">
+
+  <li class="nav-item">
+    <a class="nav-link" href="/index.html">Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/menus">Menus</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/clientes">Clientes</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="/productos">Productos</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link disabled" >Restaurantes</a>
+  </li>
+</ul>
+</nav>
+>>>>>>> 8c03ca7b572bf430f27cbb8be76ff256eaae60a0:src/main/resources/templates/index-producto.html
 <div th:switch="${datos}" class="container my-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12" >
             <h2 th:case="null">No hay productos!</h2>
             <div th:case="*">
                 <h2 class="my-5">Productos</h2>
@@ -32,8 +58,8 @@
                     <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Caloria</th>
+                        <th>Descripción</th>
+                        <th>Calorías</th>
                         <th>Precio</th>
                         <th colspan="2">Acciones</th>
                     </tr>
@@ -51,7 +77,7 @@
                 </table>
             </div>
 
-            <p class="my-5"><a href="/nuevo" class="btn btn-primary"><i class="fas fa-user-plus ml-2">Nuevo producto</i></a></p>
+            <p class="my-5"><a href="/nuevo" class="btn btn-primary"><span class="fas fa-user-plus ml-2"> Nuevo producto</span></a></p>
 
         </div>
     </div>

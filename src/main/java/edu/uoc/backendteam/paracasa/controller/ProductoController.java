@@ -33,7 +33,7 @@ public class ProductoController {
         model.addAttribute("datos", productoRepository.findAll());
         return "lista-productos";
     }
-    
+
 
     @GetMapping("/delete/{id}")
     public String deleteProducto(@PathVariable("id") long id, Model model) {
@@ -69,6 +69,7 @@ public class ProductoController {
     public String mostrarRegistroProducto(Producto producto) {
         return "create-producto";
     }
+    
 
     @PostMapping("/create")
     public String addProducto(@Valid Producto producto, BindingResult result, Model model) {
@@ -79,6 +80,5 @@ public class ProductoController {
         productoRepository.save(producto);
         return "redirect:/productos";
     }
-
-
+    
 }

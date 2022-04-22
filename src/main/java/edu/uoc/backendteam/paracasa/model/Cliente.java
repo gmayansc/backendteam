@@ -16,9 +16,23 @@ public class Cliente {
     private String direccion;
     private String nombre;
 
+<<<<<<< HEAD
     public Long getId() {
         return id;
     }
+=======
+	public Long getId() {
+		return id;
+	}
+	
+	public Cliente() {}
+	
+	public Cliente(String email, String direccion, String nombre) {
+		this.email = email;
+		this.direccion = direccion;
+		this.nombre = nombre;
+	}
+>>>>>>> 8c03ca7b572bf430f27cbb8be76ff256eaae60a0
 
     public void setId(Long id) {
         this.id = id;
