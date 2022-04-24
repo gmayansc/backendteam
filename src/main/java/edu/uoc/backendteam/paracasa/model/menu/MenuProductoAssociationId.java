@@ -16,6 +16,20 @@ public class MenuProductoAssociationId implements Serializable {
 		this.producto_id = producto_id;
 	}
 
-	
+	public Long getMenu_id() {
+		return menu_id;
+	}
+
+	public void setMenu_id(Long menu_id) {
+		this.menu_id = menu_id;
+	}
+
+	public Long getProducto_id() {
+		return producto_id;
+	}
+
+	public void setProducto_id(Long producto_id) {
+		this.producto_id = producto_id;
+	}
 
 }

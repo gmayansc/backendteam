@@ -8,11 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import edu.uoc.backendteam.paracasa.model.menu.MenuProductoAssociation;
 
@@ -22,18 +18,14 @@ public class Menu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cliente_id")
-	@JsonIgnore
-	private Cliente cliente;
-	
+
 	@OneToMany(mappedBy = "menu", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<MenuProductoAssociation> lstProducto;
-	
-	public Menu() {}
-	public Menu(Cliente cliente, List<MenuProductoAssociation> lstProducto) {
-		this.cliente = cliente;
+
+	public Menu() {
+	}
+
+	public Menu(List<MenuProductoAssociation> lstProducto) {
 		this.lstProducto = lstProducto;
 	}
 
@@ -45,14 +37,6 @@ public class Menu {
 		this.id = id;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public List<MenuProductoAssociation> getLstProducto() {
 		return lstProducto;
 	}
@@ -60,6 +44,5 @@ public class Menu {
 	public void setLstProducto(List<MenuProductoAssociation> lstProducto) {
 		this.lstProducto = lstProducto;
 	}
-	
-	
+
 }

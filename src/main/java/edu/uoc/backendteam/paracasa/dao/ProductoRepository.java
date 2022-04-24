@@ -10,4 +10,6 @@ import edu.uoc.backendteam.paracasa.model.Producto;
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
 	public List<Producto> findAll();
+	
+	public Producto findByNombre(String nombre);
 }
