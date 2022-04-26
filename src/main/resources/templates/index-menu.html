@@ -52,7 +52,12 @@
 						<tbody>
 							<tr th:each="menu : ${datos}">
 								<td th:text="${menu.id}"></td>
+								<td>nombre cliente</td>
+								<td>producto</td>
+								<td>importe</td>
+								<!--
 								<td th:text="${menu.cliente}"></td>
+								-->
                          		 <td><a href="#" class="btn btn-primary disabled" ><i class="fas fa-user-edit ml-2"></i></a></td>
                       			  <td><a  href="#" class="btn btn-primary disabled" ><i class="fas fa-user-times ml-2"></i></a></td>
 							</tr>

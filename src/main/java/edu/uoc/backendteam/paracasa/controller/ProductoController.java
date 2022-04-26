@@ -1,13 +1,11 @@
 package edu.uoc.backendteam.paracasa.controller;
 
+import edu.uoc.backendteam.paracasa.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import edu.uoc.backendteam.paracasa.dao.ProductoRepository;
 import edu.uoc.backendteam.paracasa.model.Producto;
@@ -26,7 +24,7 @@ public class ProductoController {
         return "producto";
     }
 
-    @GetMapping("/productos")
+    @GetMapping("/user/productos")
     public String productos(Model model) {
 
         productoRepository.findAll().forEach(p-> System.out.println(p.getNombre()));
@@ -35,7 +33,7 @@ public class ProductoController {
     }
 
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/admin/delete/{id}")
     public String deleteProducto(@PathVariable("id") long id, Model model) {
 
         Producto producto = productoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("producto id es invalido:" + id));
@@ -44,7 +42,7 @@ public class ProductoController {
         return "redirect:/productos";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Producto producto = productoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("producto id es invalido:" + id));
 
@@ -53,7 +51,7 @@ public class ProductoController {
         return "update-producto";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/admin/update/{id}")
     public String updateProducto(@PathVariable("id") long id, @Valid Producto producto, BindingResult result, Model model) {
         if (result.hasErrors()) {
             producto.setId(id);
@@ -65,14 +63,16 @@ public class ProductoController {
         return "redirect:/productos";
     }
 
-    @GetMapping("/nuevo")
-    public String mostrarRegistroProducto(Producto producto) {
+    @GetMapping("/admin/nuevo")
+    public String mostrarRegistroProducto(Model model) {
+
+        model.addAttribute("producto", new Producto());
         return "create-producto";
     }
     
 
-    @PostMapping("/create")
-    public String addProducto(@Valid Producto producto, BindingResult result, Model model) {
+    @PostMapping(value = "/admin/create")
+    public String addProducto(@Valid Producto producto, BindingResult result) {
         if (result.hasErrors()) {
             return "create-producto";
         }
