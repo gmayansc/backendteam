@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Listado Menu</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="../css/shards.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Listado Menu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/shards.min.css">
 </head>
+
 <body>
 	<nav>
 		<div style="text-align: center">
@@ -29,7 +27,10 @@
 			<li class="nav-item"><a class="nav-link" href="/clientes">Clientes</a></li>
 			<li class="nav-item"><a class="nav-link" href="/productos">Productos</a>
 			</li>
-			<li class="nav-item">    <a class="nav-link disabled" >Restaurantes</a>
+			<li class="nav-item"> <a class="nav-link disabled">Restaurantes</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/user/pedido">Pedidos</a>
 			</li>
 		</ul>
 	</nav>
@@ -52,21 +53,30 @@
 						<tbody>
 							<tr th:each="menu : ${datos}">
 								<td th:text="${menu.id}"></td>
-								<td th:text="${menu.cliente}"></td>
-                         		 <td><a href="#" class="btn btn-primary disabled" ><i class="fas fa-user-edit ml-2"></i></a></td>
-                      			  <td><a  href="#" class="btn btn-primary disabled" ><i class="fas fa-user-times ml-2"></i></a></td>
+								<td th:text="${menu.pedido.user.username}"></td>
+
+								<td>
+									<div th:each="productass : ${menu.lstProducto}"
+										th:text="${productass.producto.nombre}"></div>
+								</td>
+
+								<td><a href="#" class="btn btn-primary disabled"><i
+											class="fas fa-user-edit ml-2"></i></a></td>
+								<td><a href="#" class="btn btn-primary disabled"><i
+											class="fas fa-user-times ml-2"></i></a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
 				<p class="my-5">
-					<a href="#" class="btn btn-primary disabled" disabled><span
-						class="fas fa-user-plus ml-2"> Crear nuevo menú</span></a>
+					<a href="#" class="btn btn-primary disabled" disabled><span class="fas fa-user-plus ml-2"> Crear
+							nuevo menú</span></a>
 				</p>
 
 			</div>
 		</div>
 	</div>
 </body>
+
 </html>
