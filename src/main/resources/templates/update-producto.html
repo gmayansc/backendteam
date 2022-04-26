@@ -37,7 +37,7 @@
     <h2 class="mb-5">Actualizar Producto</h2>
     <div class="row">
         <div class="col-md-12">
-            <form action="#" th:action="@{/update/{id}(id=${producto.id})}" th:object="${producto}" method="post">
+            <form action="#" th:action="@{/admin/update/{id}(id=${producto.id})}" th:object="${producto}" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name" class="col-form-label">Nombre</label>

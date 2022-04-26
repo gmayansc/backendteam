@@ -20,7 +20,7 @@ public class MenuProductoAssociation implements Serializable {
 
 	private static final long serialVersionUID = -6210892747603716186L;
 
-	@Id
+	//@Id
 	@EmbeddedId
 	private MenuProductoAssociationId id;
 
