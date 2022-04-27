@@ -36,6 +36,6 @@ execute the follow command for build services on docker container
 * ``docker-compose up -d``
 
 Can you see the home page on
-* ``http://localhost:8080/productos``
+* ``http://localhost:8080/login``
 
 
