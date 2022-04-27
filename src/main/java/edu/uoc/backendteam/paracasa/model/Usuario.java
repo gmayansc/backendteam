@@ -35,6 +35,10 @@ public class Usuario {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;
+    
+    private String email;
+    
+    private String address;
 
 
 }
