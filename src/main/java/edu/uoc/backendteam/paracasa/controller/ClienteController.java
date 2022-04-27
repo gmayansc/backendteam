@@ -16,7 +16,7 @@ public class ClienteController {
 	private UsuarioRepository usuarioRepository;
 	
 	
-    @GetMapping("/clientes")
+    @GetMapping("/user/clientes")
     public String clientes(Model model) {
     	
     	Iterable<Usuario> lstUsuario = usuarioRepository.findAll();

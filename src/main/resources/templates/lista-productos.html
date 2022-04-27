@@ -21,8 +21,9 @@
 <body>
 
 	<form id="logoutForm" th:action="@{/logout}" method="post">
-		<button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" type="submit"><i
-				class="fas fa-sign-out-alt">Sign Out</i></button>
+		<button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" type="submit">
+            <i class="fas fa-sign-out-alt">Sign Out</i>
+        </button>
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 	</form>
 
@@ -30,28 +31,15 @@
 		<div style="text-align:center"><img class="logo-home" height="150px" src="../images/logo.png">
 			<h2 class="mb-5">ParaCasa: delivery food</h2>
 		</div>
-		<ul class="nav justify-content-center">
-
-  <li class="nav-item">
-    <a class="nav-link" href="/index.html">Inicio</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/menus">Menus</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link" href="/clientes">Clientes</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link" href="/user/productos">Productos</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/user/pedido">Pedidos</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link disabled" >Restaurantes</a>
-  </li>
-</ul>
-</nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/menus">Menus</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/clientes">Clientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/productos">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user/pedido">Pedidos</a></li>
+            <li class="nav-item"> <a class="nav-link disabled">Restaurantes</a></li>
+        </ul>
+    </nav>
 <div th:switch="${datos}" class="container my-5">
     <div class="row">
         <div class="col-md-12" >
