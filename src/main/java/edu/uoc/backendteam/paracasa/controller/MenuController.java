@@ -13,7 +13,7 @@ public class MenuController {
 	private MenuRepository menuRepository;
 	
 	
-    @GetMapping("/menus")
+    @GetMapping("/user/menus")
     public String menus(Model model) {
 
         menuRepository.findAll().forEach(p-> System.out.println(p.getLstProducto()));
