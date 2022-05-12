@@ -15,7 +15,11 @@ public class ProductoService {
     ProductoRepository productoRepository;
     
     public ArrayList<Producto> obtenerProductos(){
-        return (ArrayList<Producto>) productoRepository.findAll();
+        return (ArrayList<Producto>)productoRepository.findAll();
+    }
+    
+    public Producto findByName(String name){
+        return productoRepository.findByNombre(name);
     }
 
 }
