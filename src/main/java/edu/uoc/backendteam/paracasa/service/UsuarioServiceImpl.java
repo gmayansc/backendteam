@@ -29,4 +29,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return usuarioRepository.save(usuario);
     }
+
+	@Override
+	public Usuario findByName(String name) {
+		return usuarioRepository.findByUsername(name);
+	}
 }

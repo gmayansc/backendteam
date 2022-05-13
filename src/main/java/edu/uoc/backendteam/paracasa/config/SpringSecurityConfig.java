@@ -25,22 +25,22 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
         builder.userDetailsService(userDetailsServiceImpl)
                 .passwordEncoder(passwordEncoder);
     }
-
+        
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
-    	//http.csrf().disable();
-        http.authorizeRequests().antMatchers("/api/**", "/","/css/**","/js/**","/images/**","/register","/register-login","/register-process","/register-success").permitAll()
-        .antMatchers("/v2/api-docs",
-                "/configuration/ui",
+    	http.csrf().disable();
+        http.authorizeRequests().antMatchers("/","/css/*","/js/","/images/*","/register","/register-login","/register-process","/register-success").permitAll()
+        .antMatchers(
+        		"/authenticate",
                 "/swagger-resources/**",
-                "/configuration/security",
-                "/swagger-ui.html",
+                "/swagger-ui/**",
+                "/v3/api-docs",
                 "/webjars/**").permitAll()
         .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
-                .antMatchers("/api/**").hasAnyRole("USER")
-                .anyRequest().authenticated()
+        .antMatchers("/user/**").hasAnyRole("USER")
+        .antMatchers("/api/**").hasAnyRole("USER")
+        .anyRequest().authenticated().and().httpBasic()
                 // agregando el login
                 .and()
                     .formLogin()
@@ -51,8 +51,6 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .logout().permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/error_403");
-
-
-
     }
+    
 }
