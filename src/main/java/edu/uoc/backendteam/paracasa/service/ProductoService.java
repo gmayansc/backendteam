@@ -22,4 +22,12 @@ public class ProductoService {
         return productoRepository.findByNombre(name);
     }
 
+    public Producto create(Producto producto){
+         return productoRepository.save(producto);
+    }
+
+    public void delete(long id){
+         productoRepository.deleteById(id);
+    }
+
 }

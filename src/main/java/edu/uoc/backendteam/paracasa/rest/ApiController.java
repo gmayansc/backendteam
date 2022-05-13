@@ -1,4 +1,4 @@
-package edu.uoc.backendteam.paracasa.controller;
+package edu.uoc.backendteam.paracasa.rest;
 
 import java.security.Principal;
 import java.util.List;
@@ -6,10 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import edu.uoc.backendteam.paracasa.model.Pedido;
 import edu.uoc.backendteam.paracasa.model.Producto;
@@ -43,9 +40,27 @@ public class ApiController {
 		
 		return response;
 	}
+
+	@PostMapping(path = "producto")
+	public ResponseEntity<Producto> createProduct(@RequestBody Producto producto) {
+		Producto productoSave = productoService.create(producto);
+		ResponseEntity<Producto> response = new ResponseEntity<Producto>(productoSave, HttpStatus.OK);
+
+
+		return response;
+	}
+
+	@DeleteMapping(path = "producto/{id}")
+	public ResponseEntity deleteProducto(@PathVariable long id) {
+		productoService.delete(id);
+		ResponseEntity<Producto> response = new ResponseEntity<>(HttpStatus.OK);
+
+
+		return response;
+	}
 	
 	@GetMapping(path = "pedido")
-	public ResponseEntity<List<Pedido>> producto(Principal principal) {
+	public ResponseEntity<List<Pedido>> pedido(Principal principal) {
 		String name = principal.getName();
 		Usuario user = usuarioService.findByName(name);
 		List<Pedido> lstPedido = pedidoService.findByUsuario(user);

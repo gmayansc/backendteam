@@ -41,11 +41,12 @@ public class SpringFoxConfig {
 	                .securityContexts(Arrays.asList(securityContext()))
 	                .securitySchemes(Arrays.asList(apiKey()))
 	                .select()
-	                .apis(RequestHandlerSelectors.basePackage("edu.uoc.backendteam.paracasa.controller"))
+	                .apis(RequestHandlerSelectors.basePackage("edu.uoc.backendteam.paracasa.rest"))
 	                .paths(PathSelectors.any())
 	                .build();
 	    }
-    
+
+
     private ApiKey apiKey() {
         return new ApiKey(AUTHORIZATION_HEADER, "JWT", "header");
     }
@@ -53,7 +54,7 @@ public class SpringFoxConfig {
     private SecurityContext securityContext() {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
-                .build();
+				.build();
     }
 
     List<SecurityReference> defaultAuth() {
@@ -61,6 +62,8 @@ public class SpringFoxConfig {
                 = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Arrays.asList(new SecurityReference(AUTHORIZATION_HEADER, authorizationScopes));
+        return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
     }
+
+
 }
