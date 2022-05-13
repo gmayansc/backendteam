@@ -21,7 +21,6 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    // para crear user / roles
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder builder) throws  Exception{
 
@@ -31,33 +30,19 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
         
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //super.configure(http);
     	http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/","/css/*","/js/","/images/*","/register","/register-login","/register-process","/register-success").permitAll()
+                .antMatchers("/","/css/*","/js/","/images/*",
+                        "/register","/register-login","/register-process","/register-success")
+                .permitAll()
         .antMatchers(
         		"/authenticate",
                 "/swagger-resources/**",
                 "/swagger-ui/**",
                 "/v3/api-docs",
                 "/webjars/**").permitAll()
-        //.antMatchers("/admin/**").hasAnyRole("ADMIN")
-        //.antMatchers("/user/**").hasAnyRole("USER")
-        //.antMatchers("/api/**").hasAnyRole("USER")
         .anyRequest().authenticated()
-                /*
-                 // agregando el login
-                .and().httpBasic()
-                .and()
-                    .formLogin()
-                     .loginPage("/login")
-                .defaultSuccessUrl("/user/productos")
-                        .permitAll()
-                .and()
-                .logout().permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/error_403");
-                */
+
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
